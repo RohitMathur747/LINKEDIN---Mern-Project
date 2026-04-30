@@ -88,7 +88,10 @@ const Login = () => {
           {loading ? "Loading..." : "Sign In"}
         </button>
 
-        <p onClick={() => navigate("/")} className="text-center cursor-pointer">
+        <p
+          onClick={() => navigate("/signup")}
+          className="text-center cursor-pointer"
+        >
           Want To Create account ?
           <span className="text-[#24b2ff]"> Sign Up</span>
         </p>
