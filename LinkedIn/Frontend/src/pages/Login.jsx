@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { authDataContext } from "../context/AuthContext";
 import axios from "axios";
+import { userDataContext } from "../context/UserContext";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
+  const { userData, setUserData } = useContext(userDataContext);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -25,6 +27,8 @@ const Login = () => {
         },
         { withCredentials: true },
       );
+      setUserData(result.data);
+      navigate("/");
       console.log(result);
       setErr("");
       setLoading(false);
