@@ -38,7 +38,7 @@ const Home = () => {
           <div className="mt-[30px] pl-[20px] text-[19px] font-semibold text-gray-700">
             {`${userData.firstName}${userData.lastName}`}
           </div>
-          <div className="text-[19px] text-gray-500">{`${userData.location}`}</div>
+          <div className="text-[19px] text-gray-500 pl-[20px]">{`${userData.location}`}</div>
         </div>
       </div>
 
