@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 import { userDataContext } from "../context/UserContext";
 import dp from "../assets/profile.jpg";
@@ -16,10 +16,25 @@ const EditProfile = () => {
   const [skills, setSkills] = useState(userData.skills || []);
   const [newSkills, setNewSkills] = useState("");
 
+  useEffect(() => {
+    if (userData) {
+      setFirstName(userData.firstName || "");
+      setLastName(userData.lastName || "");
+      setUserName(userData.userName || "");
+      setHeadline(userData.headline || "");
+      setLocation(userData.location || "");
+      setGender(userData.gender || "");
+      setSkills(userData.skills || []);
+    }
+  }, [userData]);
+
   function addSkills(e) {
     e.preventDefault();
-    if (newSkills && !skills.includes(newSkills)) {
-      setSkills(...skills, newSkills);
+    if (newSkills.trim() && !skills.includes(newSkills.trim())) {
+      setSkills((prevSkills) => [
+        ...(Array.isArray(prevSkills) ? prevSkills : []),
+        newSkills.trim(),
+      ]);
     }
     setNewSkills("");
   }
@@ -95,10 +110,15 @@ const EditProfile = () => {
           />
           <div className="w-full p-[10px] border-2 border-gray-600 flex flex-col gap-[10px]">
             <h1 className="text-[19px] font-semibold">Skills</h1>
-            {skills && (
-              <div>
+            {Array.isArray(skills) && skills.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
                 {skills.map((skill, index) => (
-                  <div key={index}>{skills}</div>
+                  <span
+                    key={index}
+                    className="bg-blue-100 px-3 py-1 rounded-full text-sm"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             )}
