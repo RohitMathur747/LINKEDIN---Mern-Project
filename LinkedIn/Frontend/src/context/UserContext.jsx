@@ -7,6 +7,7 @@ export const userDataContext = createContext();
 const UserContext = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const { serverUrl } = useContext(authDataContext);
+  const [edit, setEdit] = useState(false);
 
   const getCurrentUser = async () => {
     try {
@@ -29,6 +30,8 @@ const UserContext = ({ children }) => {
     serverUrl,
     userData,
     setUserData,
+    edit,
+    setEdit,
   };
 
   return (
