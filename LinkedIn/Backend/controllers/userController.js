@@ -14,3 +14,5 @@ export const getCurrentUser = async (req, res) => {
     res.status(400).json({ message: "getting current user error" });
   }
 };
+
+export const updateProfile = async (req, res) => {};

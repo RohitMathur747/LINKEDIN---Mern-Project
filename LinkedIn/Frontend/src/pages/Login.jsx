@@ -83,7 +83,8 @@ const Login = () => {
 
         <button
           disabled={loading}
-          className="w-[100%] h-[50px] rounded-full bg-[#0284ca] mt-[30px] mb-[10px] text-white"
+          className="w-[100%] h-[50px] rounded-full bg-[#0284ca] 
+          mt-[30px] mb-[10px] text-white"
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
